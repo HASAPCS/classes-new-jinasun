@@ -5,16 +5,25 @@ public class Clock {
     private int minutes;
 
     public Clock(int hours, int minutes) {
+        this.hours =  hours;
+        this.minutes = minutes;
         // TODO: Initialize the hours and minutes
     }
 
-    public void addMinutes(int minutes) {
-        // TODO: Add the value of the minutes parameter to the current minutes. 
-        // Adjust the hours and minutes accordingly to represent a valid time.
+    public void addMinutes(int minutesToAdd) {
+        this.minutes += minutesToAdd;
+        if (this.minutes>=60){
+            this.hours += 1;
+            this.minutes -= 60;
+        }
+
     }
 
     public String getTime() {
-        // TODO: Return the time in the format "HH:MM"
-        return "";  // Change this default return statement
+        if (this.hours >= 13){
+            this.hours -= 12;
+            return "0" + this.hours + ":" + this.minutes;
+        }
+        return this.hours + ":" + this.minutes;
     }
 }
